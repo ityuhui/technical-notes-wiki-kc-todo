@@ -1,25 +1,24 @@
 # tech-wiki-knowledge-center
 
-## 如何扩展Kubernetes
+- [cncf/landscape](https://github.com/cncf/landscape)
 
-https://kubernetes.io/docs/concepts/extend-kubernetes/
+- [如何扩展Kubernetes](https://kubernetes.io/docs/concepts/extend-kubernetes/)
 
-## A Kubernetes Resource Interface for the Edge
+- [A Kubernetes Resource Interface for the Edge](https://github.com/deislabs/akri)
 
-https://github.com/deislabs/akri
+- [Kubernetes Device Plugins](https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/device-plugins/)
 
-## Device Plugins
+- [Open Service Broker API](https://github.com/openservicebrokerapi/servicebroker/blob/v2.13/spec.md)
 
-https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/device-plugins/
+- [开放服务代理](https://www.openservicebrokerapi.org/)
 
-## Open Service Broker API
+- 开放服务代理和Operator是两种开发云原生程序的模式
+[区别是](https://thenewstack.io/kubernetes-operators-and-the-open-service-broker-api-a-perfect-marriage/)
 
-https://github.com/openservicebrokerapi/servicebroker/blob/v2.13/spec.md
+- [prometheus](https://github.com/prometheus/prometheus)
 
-## 开放服务代理
+- test-infra
+  https://prow.k8s.io/
+  https://testgrid.k8s.io/
 
-https://www.openservicebrokerapi.org/
-
-## 开放服务代理和Operator是两种开发云原生程序的模式，区别是
-
-https://thenewstack.io/kubernetes-operators-and-the-open-service-broker-api-a-perfect-marriage/
+- [jaegertracing/jaeger](https://github.com/jaegertracing/jaeger)
