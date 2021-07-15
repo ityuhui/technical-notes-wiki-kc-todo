@@ -27,6 +27,18 @@
 
 ### 以太网和虚拟网络
 
+- [Linux 中的虚拟网络-简介](https://zboya.github.io/post/virtual_network_in_linux/)
+
 - [Ethernet and IP Networking 101](https://iximiuz.com/en/posts/computer-networking-101/?utm_medium=reddit&utm_source=r_programming)
 
 - [Docker四种网络模式](https://www.jianshu.com/p/22a7032bb7bd)
+
+- linux虚拟网络：
+  * bridge
+  * veth
+
+### 以太坊
+
+- [gitcoin.co](https://gitcoin.co/explorer?network=mainnet&idx_status=open&applicants=ALL&order_by=-web3_created)
+
+- [weekinethereumnews](https://weekinethereumnews.com/)
