@@ -22,3 +22,5 @@
   https://testgrid.k8s.io/
 
 - [jaegertracing/jaeger](https://github.com/jaegertracing/jaeger)
+
+- [Ethernet and IP Networking 101](https://iximiuz.com/en/posts/computer-networking-101/?utm_medium=reddit&utm_source=r_programming)
