@@ -1,26 +1,11 @@
-   while ((err = ERR_get_error()) != 0) { 
+```c
+while ((err = ERR_get_error()) != 0) { 
       ERR_error_string_n(err, buf, sizeof(buf)); 
       printf("*** %s\n", buf); 
    }
+```
 
+```shell
+openssl s_client -debug -connect localhost:7871 -CAfile /root/myca/cacert.pem -CAfile /root/myca/cacert.pem -cert /root/myca/user.pem -key /root/myca/user.key
+```
 
-
-
-openssl s_client -debug -connect localhost:7871 -CAfile /root/myca/cacert.pem
--CAfile /root/myca/cacert.pem -cert /root/myca/user.pem -key /root/myca/user.key
-
-export TLSv1_2=-DTLSv1_2
-
-
-EGO_PEM_ENABLE_SSL=Y
-EGO_KD_PEM_TS_PARAMS="SSL[CAFILE=/root/myca/cacert.pem,CERTIFICATE=/root/myca/vemkd.pem,CIPHER=DHE-RSA-AES256-SHA,PRIVATE_KEY=/root/myca/vemkd.key,SERVER_AUTH={PEM}]"
-EGO_PEM_TS_PARAMS="SSL[CERTIFICATE=/root/myca/pem.pem,PRIVATE_KEY=/root/myca/pem.key,CIPHER=DHE-RSA-AES256-SHA,CAFILE=/root/myca/cacert.pem,SERVER_AUTH={SEC_VEMKD}]"
-EGO_KD_PEM_TS_PORT=32781
-EGO_PEM_TS_PORT=32782
-
-
-
-      <ego:EnvironmentVariable name="SMC_PROXY_AGENT_TRANSPORT">TCPIPv4SSL</ego:EnvironmentVariable>
-      <ego:EnvironmentVariable name="SMC_PROXY_AGENT_TRANSPORT_ARG">SSL[CAFILE=/root/myca/cacert.pem,CERTIFICATE=/root/myca/user.pem,CIPHER=DHE-RSA-AES256-SHA,PRIVATE_KEY=/root/myca/user.ke
-y,SERVER_AUTH={SEC_EGO}]</ego:EnvironmentVariable>
-      <ego:EnvironmentVariable name="SMC_AGENT_TRANSPORT_ARG">SSL[CAFILE=/root/myca/cacert.pem,CIPHER=DHE-RSA-AES256-SHA,SERVER_AUTH={SEC_EGO}]</ego:EnvironmentVariable>
