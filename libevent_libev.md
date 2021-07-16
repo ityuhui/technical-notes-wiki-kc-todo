@@ -1,0 +1,1 @@
+libevent和libev都是C网络库，其实就是对socket的封装，在socket之上又增加了一个包装层。在Linux下都使用了epoll
