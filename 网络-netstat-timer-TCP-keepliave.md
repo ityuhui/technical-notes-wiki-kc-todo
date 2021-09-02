@@ -21,6 +21,7 @@ tcp        0      0 Local:39413     Foreign:50508     ESTABLISHED 0          445
 ## 第一部分的取值:
 - keepalive：当该socket的keepalive计数器被打开。这个时候连接上没有应用程序的数据传输，只有TCP协议自己的保活消息。
 - on：当该socket的retransmission计数器被打开。这个使用，应用程序在连接上尝试传输数据。
+- probe: 零窗口探测计时器（连接计时器）
 - off：以上计数器都没有被打开
 
 ## 第二部分有三个子部分:
