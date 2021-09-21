@@ -41,3 +41,21 @@ Kubernetes 调度器不停的增加新特性，使得代码越来越多、逻辑
 ## 提案
 
 调度框架定义了新的扩展点和Kubernetes调度器内供插件使用的Go API。插件编译进调度器编译内。调度器的ComponentConfig将允许激活，禁用和重新排序插件。定制调度器可以在自身代码树之外写它们的插件，并编译进定制调度器。
+
+### 调度周期和绑定周期
+
+每一次对一个pod的调度都被分成两个阶段，调度周期和绑定周期。调度周期为pod选择一个节点，绑定周期将决定应用到集群上。调度周期和绑定周期一起被成文一个“调度上下文”。调度周期是串行执行的，绑定周期有可能并行执行。
+
+A scheduling cycle or binding cycle can be aborted if the pod is determined to be unschedulable or if there is an internal error. The pod will be returned to the queue and retried. If a binding cycle is aborted, it will trigger the Unreserve method in the Reserve plugin.
+
+如果pod被认为不可调度或者发生了内部错误，调度周期或绑定周期可以被中止。pod将回到队列里重新重试调度。如果一个绑定周期被中止，将会启动Reserve插件的Unreserve方法。
+
+### 扩展点
+
+The following picture shows the scheduling context of a pod and the extension points that the scheduling framework exposes. In this picture "Filter" is equivalent to "Predicate" and "Scoring" is equivalent to "Priority function". Plugins are registered to be called at one or more of these extension points. In the following sections we describe each extension point in the same order they are called.
+
+下图展示了pod的调度上下文和调度框架暴露出来的扩展点。在该图里，"Filter"与"预选"等价，"Scoring"就是优选函数。插件被注册在一个或多个扩展点供调用。我们将根据调用的顺序来描述每一个扩展点。
+
+一个插件可以注册在多个扩展点上来执行许多复杂或者有状态的任务。
+
+![pict](https://github.com/kubernetes/enhancements/blob/master/keps/sig-scheduling/624-scheduling-framework/scheduling-framework-extensions.png)
