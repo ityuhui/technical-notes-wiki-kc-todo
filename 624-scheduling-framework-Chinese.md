@@ -46,16 +46,32 @@ Kubernetes 调度器不停的增加新特性，使得代码越来越多、逻辑
 
 每一次对一个pod的调度都被分成两个阶段，调度周期和绑定周期。调度周期为pod选择一个节点，绑定周期将决定应用到集群上。调度周期和绑定周期一起被成文一个“调度上下文”。调度周期是串行执行的，绑定周期有可能并行执行。
 
-A scheduling cycle or binding cycle can be aborted if the pod is determined to be unschedulable or if there is an internal error. The pod will be returned to the queue and retried. If a binding cycle is aborted, it will trigger the Unreserve method in the Reserve plugin.
-
 如果pod被认为不可调度或者发生了内部错误，调度周期或绑定周期可以被中止。pod将回到队列里重新重试调度。如果一个绑定周期被中止，将会启动Reserve插件的Unreserve方法。
 
 ### 扩展点
-
-The following picture shows the scheduling context of a pod and the extension points that the scheduling framework exposes. In this picture "Filter" is equivalent to "Predicate" and "Scoring" is equivalent to "Priority function". Plugins are registered to be called at one or more of these extension points. In the following sections we describe each extension point in the same order they are called.
 
 下图展示了pod的调度上下文和调度框架暴露出来的扩展点。在该图里，"Filter"与"预选"等价，"Scoring"就是优选函数。插件被注册在一个或多个扩展点供调用。我们将根据调用的顺序来描述每一个扩展点。
 
 一个插件可以注册在多个扩展点上来执行许多复杂或者有状态的任务。
 
 ![pict](https://github.com/kubernetes/enhancements/blob/master/keps/sig-scheduling/624-scheduling-framework/scheduling-framework-extensions.png)
+
+#### Queue sort
+
+这些插件用于给在调度队列里的pod排序。一个queue sort插件必须提供一个 `less(pod1, pod2)` 函数。同一时间里只有一个queue sort插件可以被激活。
+
+#### PreFilter
+
+这些插件用于预处理pod的信息，或者检查集群是否满足pod的某个特定条件。一个pre-filter插件必须实现一个 `PreFilter` 函数。如果 `PreFilter` 返回一个失败，调度周期将中止。注意 `PreFilter` 在每次调度周期只能被调用一次。
+
+A Pre-filter plugin can implement the optional PreFilterExtensions interface which define AddPod and RemovePod methods to incrementally modify its pre-processed info. The framework guarantees that those functions will only be called after PreFilter, possibly on a cloned CycleState, and may call those functions more than once before calling Filter on a specific node.
+
+一个 Pre-filter 插件可以选择实现 `PreFilterExtensions` 接口，该接口定义了 `AddPod` 和 `RemovePod` 方法，增量的修改它的预处理过的信息。框架保证这些函数只在 `PreFilter` 之后调用，可能在一个复制的 CycleState 上。在一个特定的节点上，在 Filter 调用之前可能多次调用这些函数。
+
+#### Filter
+
+这些插件用于过滤掉那些不能运行pod的节点。对于每一个节点，调度器将按照配置的顺序，调用 filter 插件。当任意一个filter插件将节点标记为不可用，剩余的插件就不会在该节点上被调用。节点的评估可能是并行的，因此 `Filter` 在一个调度周期里，可能被多次调用。
+
+#### PostFilter
+
+These plugins are called after Filter phase, but only when no feasible nodes were found for the pod. Plugins are called in their configured order. If any PostFilter plugin marks the node as Schedulable, the remaining plugins will not be called. A typical PostFilter implementation is preemption, which tries to make the pod schedulable by preempting other Pods.
