@@ -74,4 +74,16 @@ A Pre-filter plugin can implement the optional PreFilterExtensions interface whi
 
 #### PostFilter
 
-These plugins are called after Filter phase, but only when no feasible nodes were found for the pod. Plugins are called in their configured order. If any PostFilter plugin marks the node as Schedulable, the remaining plugins will not be called. A typical PostFilter implementation is preemption, which tries to make the pod schedulable by preempting other Pods.
+当没有节点可以运行这个pod时，这些插件将在 Filter 阶段之后被调用。插件按照它们配置的顺序依次执行。当任一 PostFilter 插件标记该节点为“可以调度”，剩余的插件就不会再被调用。一个典型的 PostFilter 实现是抢占。它试图通过抢占其它的pod来使得某个pod可以被调度。
+
+#### PreScore
+
+这是用于执行预评分工作的信息扩展点。过滤阶段得到的节点列表会被传递给插件。插件可以使用此数据来更新内部状态或生成日志/指标。
+
+#### Scoring
+
+这些插件有两个阶段：
+
+1. 第一阶段是"score"，用于将传入的节点排名。调度器将调用每一个打分插件为为每一个节点打分。
+
+2. 第二个阶段是"normalize scoring"（标准化评分），在调度器计算节点的最后排名之前修改分数。在标准化评分阶段，每一个打分插件都收到了同一个插件给出的所有的节点的分数。在每个调度周期的score阶段之后，每个插件都会执行标准化分数的操作。标准化分数是可选的，可以通过实现 ScoreExtensions 接口来提供。
