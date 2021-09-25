@@ -87,3 +87,42 @@ A Pre-filter plugin can implement the optional PreFilterExtensions interface whi
 1. 第一阶段是"score"，用于将传入的节点排名。调度器将调用每一个打分插件为为每一个节点打分。
 
 2. 第二个阶段是"normalize scoring"（标准化评分），在调度器计算节点的最后排名之前修改分数。在标准化评分阶段，每一个打分插件都收到了同一个插件给出的所有的节点的分数。在每个调度周期的score阶段之后，每个插件都会执行标准化分数的操作。标准化分数是可选的，可以通过实现 ScoreExtensions 接口来提供。
+
+分数插件的输出必须是 [MinNodeScore, MaxNodeScore] 范围内的整数。如果不是，则调度周期中止。这是运行插件的可选 NormalizeScore 函数后的输出。如果未提供 NormalizeScore，则 Score 的输出也必须在此范围内。在可选的 NormalizeScore 之后，调度器将根据配置的插件权重，将来自所有不同插件的节点分数进行组合。
+
+举例来说，假设一个插件 `BlinkingLightScorer` 根据节点有多少闪烁的灯来对这些节点进行排序。
+
+```go
+func (*BlinkingLightScorer) Score(state *CycleState, _ *v1.Pod, nodeName string) (int, *Status) {
+   return getBlinkingLightCount(nodeName)
+}
+```
+
+但是，闪烁的灯的最大数量可能比 `MaxNodeScore` 要小，为了修复这个问题，`BlinkingLightScorer` 插件需要实现 `NormalizeScore`
+
+```go
+func (*BlinkingLightScorer) NormalizeScore(state *CycleState, _ *v1.Pod, nodeScores NodeScoreList) *Status {
+   highest := 0
+   for _, nodeScore := range nodeScores {
+      highest = max(highest, nodeScore.Score)
+   }
+   for i, nodeScore := range nodeScores {
+      nodeScores[i].Score = nodeScore.Score*MaxNodeScore/highest
+   }
+   return nil
+}
+```
+
+If either Score or NormalizeScore returns an error, the scheduling cycle is aborted.
+
+如果 `Score` 或 `NormalizeScore` 返回错误，调度周期就会中止。
+
+#### Reserve
+
+实现 Reserve 扩展的插件有两种方法，即 Reserve 和 Unreserve，分别支持称为 Reserve 和 Unreserve 的两个信息调度阶段。维护运行时状态的插件（又名“有状态插件”）应该使用这些阶段，以便在节点上的资源为给定 Pod 保留和取消保留时由调度程序通知。
+
+Reserve 阶段发生在调度程序实际将 Pod 绑定到其指定节点之前。它的存在是为了在调度程序等待绑定成功时防止race conditions。每个 Reserve 插件的 Reserve 方法可能成功也可能失败；如果一个 Reserve 方法调用失败，则不会执行后续插件，并且 Reserve 阶段被视为失败。如果所有插件的 Reserve 方法都成功，则认为 Reserve 阶段成功，执行剩余的调度周期和绑定周期。
+
+如果 Reserve 阶段或后续阶段失败，则触发 Unreserve 阶段。发生这种情况时，所有 Reserve 插件的 Unreserve 方法将按照 Reserve 方法调用的相反顺序执行。此阶段的存在是为了清理与保留的 Pod 关联的状态。
+
+*注意： Reserve 插件中 Unreserve 方法的实现必须是幂等的，不能失败。*
