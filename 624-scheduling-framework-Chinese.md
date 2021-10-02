@@ -126,3 +126,63 @@ Reserve 阶段发生在调度程序实际将 Pod 绑定到其指定节点之前�
 如果 Reserve 阶段或后续阶段失败，则触发 Unreserve 阶段。发生这种情况时，所有 Reserve 插件的 Unreserve 方法将按照 Reserve 方法调用的相反顺序执行。此阶段的存在是为了清理与保留的 Pod 关联的状态。
 
 *注意： Reserve 插件中 Unreserve 方法的实现必须是幂等的，不能失败。*
+
+#### Permit
+
+这些插件用于阻止或延迟一个pod的绑定。一个 permet 插件可以做以下三件事情之一：
+
+1. approve
+一旦所有的 permit 插件批准了一个 pod，pod被发出用于绑定。
+
+2. deny
+如果任意一个 permit 插件拒绝了一个 pod, 该pod被退回到调度队列。这将激活 Reserve 插件的 Unreserve 方法。
+
+3. wait (带有一个timeout)
+如果一个 permit 插件返回“wait”，该pod 保持在 permit阶段，直到一个插件批准它。如果timeout到达，wait变为deny，该pod
+If a permit plugin returns "wait", then the pod is kept in the permit phase until a plugin approves it. If a timeout occurs, wait becomes deny and the pod is returned to the scheduling queue, triggering unreserve method in Reserve phase. 该pod被退回到调度队列，并激活 Reserve 插件的 Unreserve 方法。
+
+Permit 插件作为调度周期的最后一步被执行，permi阶段的 waiting 发生在绑定周期的开始，PreBind插件执行之前。
+
+#### Approving a pod binding
+
+虽然任何插件都可以从缓存中接收保留列表里的 Pod 并批准它们（参见 FrameworkHandle），但我们希望只有 permit 插件批准处于“waiting”状态的保留 Pod 的绑定。一旦 Pod 被批准，它就会被发送到 pre-bind 阶段。
+
+#### PreBind
+
+这些插件用于在绑定 pod 之前执行所需的任何工作。例如，prebind 插件可能会提供一个网络卷并将其安装在目标节点上，然后再允许 pod 在那里运行。
+
+如果任何 PreBind 插件返回错误，则 Pod 将被拒绝并返回到调度队列。
+
+#### Bind
+
+这些插件用于将 pod 绑定到节点。在所有 PreBind 插件完成之前，不会调用 Bind 插件。每个 bind 插件都按配置的顺序调用。Bind 插件可以选择是否处理给定的 Pod。如果 bind 插件选择处理 Pod，其余的 bind 插件则会被跳过。
+
+#### PostBind
+
+这是一个信息扩展点。 PostBind 插件在 pod 成功绑定后被调用。这是绑定周期的结束，可用于清理相关资源。
+
+### Plugin API
+
+plugin API 有两个步骤。首先，插件必须注册和配置，其次，插件被絮使用扩展点接口。扩展点接口的形式如下：
+
+```golang
+type Plugin interface {
+   Name() string
+}
+
+type QueueSortPlugin interface {
+   Plugin
+   Less(*PodInfo, *PodInfo) bool
+}
+
+
+type PreFilterPlugin interface {
+   Plugin
+   PreFilter(CycleState, *v1.Pod) *Status
+}
+
+// ...
+```
+
+#### CycleState
+
