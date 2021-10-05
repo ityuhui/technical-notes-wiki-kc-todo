@@ -186,3 +186,14 @@ type PreFilterPlugin interface {
 
 #### CycleState
 
+大多数插件函数*调用时都会带有参数 `CycleState`，一个 `CycleState` 代表了当前的调度上下文
+
+一个 `CycleState` 将提供用于访问当前调度上下文范围内的数据的 API。由于绑定周期可能会并发的执行，插件可以使用 `CycleState` 来确保它们正在处理正确的请求。
+
+**唯一的例外是 [queue sort](https://github.com/kubernetes/enhancements/tree/master/keps/sig-scheduling/624-scheduling-framework#queue-sort) 插件。*
+
+警告: 通过 `CycleState` 得到的数据在一次调度上下文结束之后就会失效。在超过必要的时间后，插件不应当持有指向数据的引用。
+
+#### FrameworkHandle
+
+
