@@ -196,4 +196,55 @@ type PreFilterPlugin interface {
 
 #### FrameworkHandle
 
+与 `CycleState` 提供单一调度上下文相关的API不同，`FrameworkHandle` 提供一个插件的生命周期相关的API。插件可以获得一个客户端（`kubernetes.Interface`）和 `SharedInformerFactory`，或者从调度器的集群状态缓存中读取数据。同样也提供列表、批准或拒绝 [waiting pods](https://github.com/kubernetes/enhancements/tree/master/keps/sig-scheduling/624-scheduling-framework#permit)的 API。
+
+**警告**: `FrameworkHandle` 提供对Kubernetes API server和调度器内部缓存的访问。但是两者不保证同步，在编写使用它们两者数据的插件时应格外小心。
+
+提供对 API 服务器的插件访问是实现有用功能所必需的，尤其是当这些功能使用调度程序通常不考虑的对象类型时。提供 `SharedInformerFactory` 允许插件安全地共享缓存。
+
+#### Plugin Registration
+
+每一个插件都必须定义一个构造器，并将其添加到硬编码的注册表里。关于构造器参数的更多信息，请参阅 [Optional Args](https://github.com/kubernetes/enhancements/tree/master/keps/sig-scheduling/624-scheduling-framework#optional-args)
+
+举例：
+
+```golang
+type PluginFactory = func(runtime.Unknown, FrameworkHandle) (Plugin, error)
+
+type Registry map[string]PluginFactory
+
+func NewRegistry() Registry {
+   return Registry{
+      fooplugin.Name: fooplugin.New,
+      barplugin.Name: barplugin.New,
+      // New plugins are registered here.
+   }
+}
+```
+
+也可以将插件添加到 Registry 对象并将其注入调度程序。参见 [Custom Scheduler Plugins](https://github.com/kubernetes/enhancements/tree/master/keps/sig-scheduling/624-scheduling-framework#custom-scheduler-plugins-out-of-tree).
+
+### Plugin Lifecycle
+
+#### Initialization
+
+插件初始化有两个步骤，首先 [注册插件](https://github.com/kubernetes/enhancements/tree/master/keps/sig-scheduling/624-scheduling-framework#plugin-registration)，然后，调度器根据配置，决定初始化哪一个插件。如果一个插件注册在多个扩展点上，它只初始化一次。
+
+当初始化一个插件时，`config args` 和一个 `FrameworkHandle` 会传给该插件。
+
+#### Concurrency
+
+插件编写者应该考虑两种类型的并发。在评估多个节点时，一个插件可能会被并发调用多次，也可能会从不同的 [调度上下文](https://github.com/kubernetes/enhancements/tree/master/keps/sig-scheduling/624-scheduling-framework#scheduling-cycle--binding-cycle)中并发调用。
+
+注意：在一个调度上下文中，每个扩展点都是串行评估的。
+
+在调度器的主线程中，一次只处理一个调度周期。在下一个调度周期开始之前，任何扩展点（包括[permit](https://github.com/kubernetes/enhancements/tree/master/keps/sig-scheduling/624-scheduling-framework#permit)）都将完成*。在permit扩展点之后，异步执行绑定周期。这意味着一个调用插件可以从两个不同的调度上下文同时被调用，前提是至少有一个调用是在 permit 之后的扩展点。有状态插件应该小心处理这些情况。
+
+最后，Reserve插件里的 [Unreserve](https://github.com/kubernetes/enhancements/tree/master/keps/sig-scheduling/624-scheduling-framework#reserve) 方法可以从主线程或者绑定线程中被调用，具体取决于 pod 被拒绝的方式。
+
+**queue sort扩展点是一个特例。它不是调度上下文的一部分，可以为许多 pod 对同时调用。*
+
+![scheduling-framework-threads.png](https://github.com/kubernetes/enhancements/blob/master/keps/sig-scheduling/624-scheduling-framework/scheduling-framework-threads.png)
+
+### Configuring Plugins
 
