@@ -248,3 +248,89 @@ func NewRegistry() Registry {
 
 ### Configuring Plugins
 
+调度程序的组件配置将允许启用、禁用或以其他方式配置插件。插件配置分为两部分：
+
+1. 每个扩展点的已启用插件列表（以及它们应该运行的顺序）。 如果省略这些列表之一，则将使用默认列表。
+2. 每个插件的一组可选的自定义插件参数。省略插件的配置参数相当于使用该插件的默认配置。
+
+插件配置由扩展点组织。注册在多个扩展点的插件必须包含在每个列表里。
+
+```go
+type KubeSchedulerConfiguration struct {
+    // ... other fields
+    Plugins      Plugins
+    PluginConfig []PluginConfig
+}
+
+type Plugins struct {
+    QueueSort      []Plugin
+    PreFilter      []Plugin
+    Filter         []Plugin
+    PostFilter     []Plugin
+    PreScore       []Plugin
+    Score          []Plugin
+    Reserve        []Plugin
+    Permit         []Plugin
+    PreBind        []Plugin
+    Bind           []Plugin
+    PostBind       []Plugin
+}
+
+type Plugin struct {
+    Name   string
+    Weight int // Only valid for Score plugins
+}
+
+type PluginConfig struct {
+    Name string
+    Args runtime.Unknown
+}
+
+```
+
+举例
+
+```go
+{
+  "plugins": {
+    "preFilter": [
+      {
+        "name": "PluginA"
+      },
+      {
+        "name": "PluginB"
+      },
+      {
+        "name": "PluginC"
+      }
+    ],
+    "score": [
+      {
+        "name": "PluginA",
+        "weight": 30
+      },
+      {
+        "name": "PluginX",
+        "weight": 50
+      },
+      {
+        "name": "PluginY",
+        "weight": 10
+      }
+    ]
+  },
+  "pluginConfig": [
+    {
+      "name": "PluginX",
+      "args": {
+        "favorite_color": "#326CE5",
+        "favorite_number": 7,
+        "thanks_to": "thockin"
+      }
+    }
+  ]
+}
+
+```
+
+#### Enable/Disable
