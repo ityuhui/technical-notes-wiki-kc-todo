@@ -334,3 +334,51 @@ type PluginConfig struct {
 ```
 
 #### Enable/Disable
+
+当指定时，特定扩展点的启用的插件列表是唯一的。如果扩展点在配置中被省略，默认插件集将用于该扩展点。
+
+#### Change Evaluation Order
+
+插件评估顺序由插件在配置中出现的顺序指定。注册在多个扩展点上的插件在每个扩展点可以有不同的排序。
+
+#### Optional Args
+
+插件可以从具有任意结构的配置中接收参数。由于一个插件可能出现在多个扩展点中，配置位于 `PluginConfig` 的单独列表中。
+
+举例来说，
+
+```json
+{
+   "name": "ServiceAffinity",
+   "args": {
+      "LabelName": "app",
+      "LabelValue": "mysql"
+   }
+}
+```
+
+```go
+func NewServiceAffinity(args *runtime.Unknown, h FrameworkHandle) (Plugin, error) {
+    if args == nil {
+        return nil, errors.Errorf("cannot find service affinity plugin config")
+    }
+    if args.ContentType != "application/json" {
+        return nil, errors.Errorf("cannot parse content type: %v", args.ContentType)
+    }
+    var config struct {
+        LabelName, LabelValue string
+    }
+    if err := json.Unmarshal(args.Raw, &config); err != nil {
+        return nil, errors.Wrap(err, "could not parse args")
+    }
+    //...
+}
+```
+
+#### Backward Compatibility
+
+当前的 `KubeSchedulerConfiguration` kind 有 `apiVersion: kubescheduler.config.k8s.io/v1alpha1`，新的配置格式要么是`v1alpha2`，要么是 `v1beta1`。当一个更新版本的调度器解析一个 `v1alpha1`，"policy"部分将用于构建一个等效的插件配置。
+
+注意：将 `KubeSchedulerConfiguration` 移至 `v1` 超出了本设计的范围，但另请参阅 https://github.com/kubernetes/enhancements/blob/master/keps/sig-cluster-lifecycle/wgs/783-component-base/README.md 和 https://github.com/kubernetes/community/pull/3008
+
+### Interactions with Cluster Autoscaler
