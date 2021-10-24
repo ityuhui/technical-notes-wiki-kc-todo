@@ -382,3 +382,12 @@ func NewServiceAffinity(args *runtime.Unknown, h FrameworkHandle) (Plugin, error
 注意：将 `KubeSchedulerConfiguration` 移至 `v1` 超出了本设计的范围，但另请参阅 https://github.com/kubernetes/enhancements/blob/master/keps/sig-cluster-lifecycle/wgs/783-component-base/README.md 和 https://github.com/kubernetes/community/pull/3008
 
 ### Interactions with Cluster Autoscaler
+
+Cluster Autoscaler 需要被修改来运行 Filter 插件，从而替代 predicates，方法是创建一个 Framework 实例并调用 `RunFilterPlugins`。
+
+## Use Cases
+
+下面是一些展示调度框架如何被使用的例子：
+### Coscheduling
+
+与 [kube-batch](https://github.com/kubernetes-sigs/kube-batch)（有时候也叫做“团体调度”） 类似的功能，实现为一个插件。对于一个批次里的pods，该插件在 permit 阶段，使用“wait”选项，累积多个pod。因为 permit 阶段在 reserve 之后，后续的pod将被调度，就好像等待的 Pod 正在使用这些资源一样。一旦批次中有足够的 pod 等待，它们都可以被批准。
