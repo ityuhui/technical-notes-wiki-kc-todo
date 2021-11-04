@@ -388,6 +388,39 @@ Cluster Autoscaler 需要被修改来运行 Filter 插件，从而替代 predica
 ## Use Cases
 
 下面是一些展示调度框架如何被使用的例子：
+
 ### Coscheduling
 
 与 [kube-batch](https://github.com/kubernetes-sigs/kube-batch)（有时候也叫做“团体调度”） 类似的功能，实现为一个插件。对于一个批次里的pods，该插件在 permit 阶段，使用“wait”选项，累积多个pod。因为 permit 阶段在 reserve 之后，后续的pod将被调度，就好像等待的 Pod 正在使用这些资源一样。一旦批次中有足够的 pod 等待，它们都可以被批准。
+
+### Dynamic Resource Binding
+
+[Topology-Aware Volume Provisioning](https://kubernetes.io/blog/2018/10/11/topology-aware-volume-provisioning-in-kubernetes/)可以实现为 filter 和 pre-bind 扩展点上的插件，在 filtering 阶段，该插件确保pod被调度到提供特定的卷的区域。之后，在 pre-bind 阶段，该插件可以在调度器绑定pod之前，创建所需的卷。
+
+### Custom Scheduler Plugins (out of tree)
+
+调度框架允许人们创建定制的、高性能的调度特性，无需与调度器的代码分叉。由于插件必须被编译进调度器，所以编写一个main()包装器是必要的，以避免修改 `vendor/k8s.io/kubernetes` 中的代码。
+
+```go
+import (
+    scheduler "k8s.io/kubernetes/cmd/kube-scheduler/app"
+)
+
+func main() {
+    command := scheduler.NewSchedulerCommand(
+            scheduler.WithPlugin("example-plugin1", ExamplePlugin1),
+            scheduler.WithPlugin("example-plugin2", ExamplePlugin2))
+    if err := command.Execute(); err != nil {
+        fmt.Fprintf(os.Stderr, "%v\n", err)
+        os.Exit(1)
+    }
+}
+
+```
+
+*注意：上述代码只是一个例子，可能与最新的API不匹配。*
+
+定制插件需要在调度器配置中作为正常的插件激活，参考[Configuring Plugins](https://github.com/kubernetes/enhancements/tree/master/keps/sig-scheduling/624-scheduling-framework#configuring-plugins).
+
+## 测试计划
+
