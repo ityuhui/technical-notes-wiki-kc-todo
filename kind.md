@@ -14,8 +14,7 @@ kind-2
 
 ## 切换集群
 ```
-# kubectl cluster-info --context kind-kind
-# kubectl cluster-info --context kind-kind-2
+# kubectl config use-context kind-2
 ```
 
 ## 删除集群
