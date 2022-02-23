@@ -77,3 +77,13 @@ springdoc.swagger-ui.path=/swagger-ui.html
 # /api-docs endpoint custom path
 springdoc.api-docs.path=/api-docs
 ```
+
+### 禁用
+
+```
+# Disabling the /v3/api-docs endpoint
+springdoc.api-docs.enabled=false
+
+# Disabling the swagger-ui
+springdoc.swagger-ui.enabled=false
+```
