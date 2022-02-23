@@ -1,4 +1,4 @@
-# 为 SpringBoot REST项目生成 Swagger/OpenAPI 3.0 文档
+# 为 SpringBoot REST 项目生成 Swagger/OpenAPI 3.0 文档
 
 ## 介绍
 
@@ -59,12 +59,6 @@ swagger UI
 curl localhost:port/v3/swagger-ui.html
 ```
 
-这个地址可以修改:
-```
-# swagger-ui custom path
-springdoc.swagger-ui.path=/swagger-ui.html
-```
-
 swagger json
 ```shell
 curl http://localhost:port/v3/api-docs
@@ -73,4 +67,13 @@ curl http://localhost:port/v3/api-docs
 swagger yaml
 ```shell
 curl http://localhost:port/v3/api-docs.yaml
+```
+
+修改地址：
+```
+# swagger-ui custom path
+springdoc.swagger-ui.path=/swagger-ui.html
+
+# /api-docs endpoint custom path
+springdoc.api-docs.path=/api-docs
 ```
