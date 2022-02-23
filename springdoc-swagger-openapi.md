@@ -51,7 +51,7 @@ Swagger/OpenAPI 用于定义后端的REST API，协调前后端的开发。
 
 执行
 ```shell
-mvn springboot:run
+mvn spring-boot:run
 ```
 
 swagger UI
