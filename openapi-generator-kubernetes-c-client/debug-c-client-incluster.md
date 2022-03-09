@@ -13,9 +13,16 @@
     kubectl cp ./list_pod_incluster_bin test-pod-8:/
     ```
 
+1. Enter the pod:
+
+    ```shell
+    kubectl exec -it test-pod-8 -- bash
+    ````
+
 1. Install dependency as description in [readme](https://github.com/kubernetes-client/c) in the pod:
 
     ```shell
+
     apt update
     apt install ...
     ...
