@@ -1,10 +1,12 @@
-Operator Frameowrk 有三个组成部分
+# Operator Frameowrk 
 
-- sdk: 用于创建 operator
-- olm：用于打包和分发 operator
+Consists of 3 sub-projects:
+
+- sdk: create operator
+- olm: pack and release operator
 - operatorhub：host operators
 
-sdk 有三种开发方式
+There are 3 development models for Operator sdk:
 
 - ansible
 - golang
