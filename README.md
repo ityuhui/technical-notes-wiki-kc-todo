@@ -70,8 +70,9 @@
 - reactjs
   * 企业开发使用antd pro
   * webapp开发使用create-react-app
-  * 静态展示页面使用nextjs
+  * 静态展示页面使用nextjs，nextjs是同时可以用于前端渲染和后端渲染的 reactjs，nodejs 库
 - Typescript适用于node项目，前端库。自己的前端业务代码斟酌使用
+- nest.js 是 typescript 的 nodejs 框架，类似于 spring
 
 ### AI
 
