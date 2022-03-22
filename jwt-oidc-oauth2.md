@@ -44,3 +44,14 @@ OpenID 服务器签发三个 JWT 给应用程序的服务端：
 
 仅用于 授权 ，发布两个token
 - Access Token
+
+## JWT 缺点 和 可选方案
+
+JWT 一旦被盗，服务器无法应对，只能等待 JWT 到期。所以需要在服务器端维护一个 JWT 列表，这样在 多服务器 环境下无法工作，所以又需要引入 redis 来集群储存 JWT，这样又回到了 session- redis 模式
+
+可选方案：
+- 自己创建一个 token, key是一个哈希值，value是 用户信息，保存到 redis 里。这其实还是 session- redis模式
+- 使用消息队列来通知 JWT 
+JWT 一旦被盗，服务器无法应对，只能等待 JWT 到期。所以需要在服务器端维护一个 JWT 列表，这样在 多服务器 环境下无法工作，所以又需要引入 redis 来集群储存 JWT，这样又回到了 session- redis 模式f昂发
+JWT 一旦被盗，服务器无法应对，只能等待 JWT 到期。所以需要在服务器端维护一个 JWT 列表，这样在 多服务器 环境下无法工作，所以又需要引入 redis 来集群储存 JWT，这样又回到了 session- redis 模式
+
