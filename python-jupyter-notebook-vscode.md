@@ -8,4 +8,5 @@ Steps
     ```shell
     pip3 install ipykernel
     ```
-1. Open the remote directory with VSC, create a `.ipynb` file
+1. Open the remote directory with VSC,
+   Create New Jupyter Notebook command from the Command Palette (Ctrl+Shift+P) or by creating a new .ipynb file in your workspace.

@@ -54,6 +54,12 @@
   * bridge
   * veth
 
+- vlan：将局域网分成多个逻辑子局域网，限制广播域
+
+- vxlan：使用underlay来打隧道(overlay)
+
+- overlay 和 underlay
+
 ### Linux
 
 - libffi
