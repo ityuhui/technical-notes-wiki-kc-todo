@@ -1,5 +1,12 @@
 # CMake 使用总结
 
+## Enable Debug
+
+### CLI
+```
+cmake -DCMAKE_BUILD_TYPE=Debug  ..
+```
+
 ## cpake/CPack
 
 ```CMake
