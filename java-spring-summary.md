@@ -8,7 +8,7 @@ is a @Component
 
 @ComponentScan will scan and initiate all @Component class
 
-### By JavaConfig
+### By JavaConfig (XML)
 @Configuration
 @Bean is actually a Java configuration file
 
