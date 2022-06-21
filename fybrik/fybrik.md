@@ -39,3 +39,31 @@ ssh -L 8080:localhost:8080 root@kind-machine
 - 用户将使用数据的要求（用什么数据，对数据做什么预处理），发送给fybrik
 - fybrik控制器从 catalog 处获得元数据，从 opa 处获得 policy，制作成 blueprint，（以上称作控制面），发送给数据面
 - 数据面里的 blueprint handler，调用不同的module（其实就是完成某个功能的插件）对数据（分布于不同的位置）进行读取和处理，返回给用户使用。
+
+## 目前支持的源 datastore
+
+- db2
+- s3
+- kafka
+
+## 目前支持的源 文件格式
+
+- csv
+- parquet
+
+## 目前支持的目标 格式
+
+- arrow
+
+## 支持的 capability
+
+- read
+- write
+- copy
+
+## 支持的 action
+
+- redact
+- deny
+- ...
+- 
