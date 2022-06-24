@@ -72,7 +72,10 @@
 ### 前端
 
 - electron是主流的web-based 桌面应用程序方案
-- commonjs是nodejs内置的javascript模块化方案
+- javascript模块化方案
+  * commonjs 是 nodejs 内置方案: `export/require`
+  * ES6 自带模块化方案: `export/import`
+  * AMD 和 CMD 用于浏览器侧，需要配合一个库文件，我认为目前已经被 ES6 内置方案取代
 - reactjs
   * 企业开发使用antd pro
   * webapp开发使用create-react-app
