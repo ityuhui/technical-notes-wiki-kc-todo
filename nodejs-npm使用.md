@@ -3,3 +3,8 @@
 ```shell
 npm root -g
 ```
+
+@前缀表示组织里的包，不是registry全局的
+```bash
+npm i @namesapce/package_name
+```
