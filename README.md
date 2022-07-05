@@ -1,9 +1,6 @@
 # tech-wiki-knowledge-center
 
-### 分布式计算，基础设施论文
-
-- [usenix 会议最佳论文](https://www.usenix.org/conferences/best-papers)
-### 云原生
+## 云原生
 
 - [cncf/landscape](https://github.com/cncf/landscape)
 
@@ -42,7 +39,7 @@
 - git - jenkins pipeline | argo - harbor - k8s
 
 - [Spark on k8s](https://github.com/GoogleCloudPlatform/spark-on-k8s-operator/blob/master/docs/user-guide.md)
-### 以太网和虚拟网络
+## 以太网和虚拟网络
 
 - [Linux 中的虚拟网络-简介](https://zboya.github.io/post/virtual_network_in_linux/)
 
@@ -60,17 +57,17 @@
 
 - overlay 和 underlay
 
-### Linux
+## Linux
 
-- libffi
 - ebpf
 
-### 后端编程和平台
+## 后端编程和平台
 
-- shell单元测试框架-bats
 - [Golang golang 总结](https://github.com/ityuhui/go-experiment/blob/main/README.md)
+- libffi
+- shell单元测试框架-bats
 
-### 前端
+## 前端
 
 - electron是主流的web-based 桌面应用程序方案
 - javascript模块化方案
@@ -84,13 +81,23 @@
 - Typescript适用于node项目，前端库。自己的前端业务代码斟酌使用
 - nest.js 是 typescript 的 nodejs 框架，类似于 spring
 
-### AI
+
+## Data
+
+- 数据库
+- 数据仓库
+- 大数据
+- datalog metedata
+  * IBM WKC
+  * LF Egeria (Donated by IBM)
+  * Apache Atlas
+
+## AI
 
 - FPGA vs ASIC
 - 深度学习模型训练可以租用云GPU
-### 以太坊
+## 以太坊
 
 - [gitcoin.co](https://gitcoin.co/explorer?network=mainnet&idx_status=open&applicants=ALL&order_by=-web3_created)
 - [weekinethereumnews](https://weekinethereumnews.com/)
 - [Truffle Suite](https://www.trufflesuite.com/docs/truffle/quickstart)
-
