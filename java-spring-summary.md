@@ -17,3 +17,12 @@ is a @Component
 @Autowared
 or
 constructor
+
+## WEB 
+
+@RequestParam ← application/x-www-form-urlencoded,
+
+@RequestBody ← application/json,
+
+@RequestPart ← multipart/form-data,
+
