@@ -2,9 +2,9 @@
 
 Consists of 3 sub-projects:
 
-- sdk: create operator
-- olm: pack and release operator
-- operatorhub：host operators
+- SDK: create operator
+- OLM: pack and release operator, it's actually an operator that manages other operators
+- OperatorHub：host operators
 
 There are 3 development models for Operator sdk:
 
