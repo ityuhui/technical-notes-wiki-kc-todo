@@ -87,6 +87,11 @@
 - 数据库
 - 数据仓库
 - 大数据
+  * BigTable/HBase 不是列式数据库，而是hashmap
+  * ClickHouse 是列式数据库
+  * Apache Parquet 是 列式数据 的文件存储格式
+  * Apache Arrow 是 列式数据 的内存格式，在不同大数据系统之间高效的交换数据
+- https://ityuhui.github.io/2021/06/02/my-database-summary/
 - datalog metedata
   * IBM WKC
   * LF Egeria (Donated by IBM)
