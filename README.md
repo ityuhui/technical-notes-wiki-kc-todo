@@ -24,6 +24,11 @@
 [区别是](https://thenewstack.io/kubernetes-operators-and-the-open-service-broker-api-a-perfect-marriage/)
 
 - [prometheus](https://github.com/prometheus/prometheus)
+
+- [使用 prometheus 监控 kubernetes 指导](https://ityuhui.github.io/2021/05/07/notes-for-kubernetes-monitoring-prometheus/)
+
+- [prometheus 简单实验](./prometheus-simple-experiment.md)
+
 - grafana 
 
 - [istio](https://istio.io/latest/docs/setup/getting-started/)
