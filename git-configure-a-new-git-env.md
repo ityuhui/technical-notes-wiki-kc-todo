@@ -27,4 +27,4 @@ tzselect
 
 ## Clone the repository
 
-## Add the remote
+## Add the upstream url
