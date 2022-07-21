@@ -11,6 +11,14 @@
 
 - [cncf/Contour] 使用 envoy 构建的 Kubernetes ingress controller
 
+- [cncf/keda] Kubernetes event-based autoscaling，一个operator，接管了HPA，可以自定义 metrics 来源，例如从activemq收到消息，自动控制 deployment，解决 POD 从0到1和从1到0的问题，将从1到多和从多到1的处理交给 HPA 来做。
+
+- [cncf/Cortex/Thanos] Prometheus setup
+
+- [cncf/kudo] 一个创建 Kubernetes operator 的工具，使用声明式语言编写，不写代码，非常类似于 operator framework 里的 ansible，helm 方案。
+
+- [cncf/notary] registry/image security compliance
+
 - [如何扩展Kubernetes](https://kubernetes.io/docs/concepts/extend-kubernetes/)
 
 - [virtual-kubelet](https://github.com/virtual-kubelet/virtual-kubelet)
@@ -66,6 +74,8 @@
 - vxlan：使用underlay来打隧道(overlay)
 
 - overlay 和 underlay
+
+- hostNetwork: true
 
 ## Linux
 
