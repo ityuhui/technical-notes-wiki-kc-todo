@@ -1,4 +1,25 @@
-#! bash
+#! /usr/bin/env bash
+
+set -x
+
+op=$1
+
+# Turn colors in this script off by setting the NO_COLOR variable in your
+# environment to any value:
+#
+# $ NO_COLOR=1 test.sh
+NO_COLOR=${NO_COLOR:-""}
+if [ -z "$NO_COLOR" ]; then
+  header=$'\e[1;33m'
+  reset=$'\e[0m'
+else
+  header=''
+  reset=''
+fi
+
+header_text () {
+  echo "$header$*$reset"
+}
 
 K8S_VERSION=${K8S_VERSION:-v1.24.0@sha256:0866296e693efe1fed79d5e6c7af8df71fc73ae45e3679af05342239cdc5bc8e}
 : ${MY_NAMESPACE:=my-namespace}
@@ -52,16 +73,16 @@ registry_create() {
 }
 
 kind_delete() {
-  bin/kind delete cluster --name $1
+  kind delete cluster --name $1
 }
 
 kind_create() {
-  bin/kind create cluster --name $1 \
+  kind create cluster --name $1 \
     -v 4 --retain --wait=0s \
     --config ./$2 \
     --image=kindest/node:$K8S_VERSION
   for node in $(kind get nodes --name $1); do
-    bin/kubectl annotate node "${node}" "tilt.dev/registry=localhost:5000" --context kind-${1}
+    kubectl annotate node "${node}" "tilt.dev/registry=localhost:5000" --context kind-${1}
   done
 }
 
