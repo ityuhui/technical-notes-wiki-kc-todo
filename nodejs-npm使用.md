@@ -8,3 +8,15 @@ npm root -g
 ```bash
 npm i @namesapce/package_name
 ```
+
+代码里面的
+```
+require(@abc)
+
+import(@abc)
+```
+
+里面的 @ 是一个别名，可以在项目配置里找到解析成什么，例如
+```
+ @: "src"
+```
