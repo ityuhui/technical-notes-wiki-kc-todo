@@ -47,3 +47,17 @@ typed （GVK Scheme 已知）
 ### 3 Opeartor SDK
 
 使用 controller-runtime 和 controller-tools
+
+## release Operator 
+
+### Helm
+
+参数化一组 yaml 文件
+
+### Kustomize
+
+### 其它
+
+- sed, awk, jq, yq
+- Ansible
+- Ksonnet 已经废弃
