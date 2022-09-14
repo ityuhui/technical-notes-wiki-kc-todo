@@ -61,3 +61,10 @@ typed （GVK Scheme 已知）
 - sed, awk, jq, yq
 - Ansible
 - Ksonnet 已经废弃
+
+## API Server
+
+[k8s.io/apiserver/pkg/registry/rest](https://github.com/kubernetes/kubernetes/tree/master/staging/src/k8s.io//apiserver/pkg/registry/rest) 定义了 API server 的 REST 接口
+
+[k8s.io/apiserver/pkg/registry/generic](https://github.com/kubernetes/kubernetes/tree/master/staging/src/k8s.io/apiserver/pkg/registry/generic) 在 generic object 上实现了这个接口
+
