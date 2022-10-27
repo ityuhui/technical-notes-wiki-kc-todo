@@ -100,6 +100,11 @@
   * 静态展示页面使用nextjs，nextjs是同时可以用于前端渲染和后端渲染的 reactjs，nodejs 库
 - Typescript适用于node项目，前端库。自己的前端业务代码斟酌使用
 - nest.js 是 typescript 的 nodejs 框架，类似于 spring
+- https://ityuhui.github.io/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91-Frontend-Development/
+- CSS
+  * flex 布局
+  * Tailwindcss
+
 
 
 ## Data
