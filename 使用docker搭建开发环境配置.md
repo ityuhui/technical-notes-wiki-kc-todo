@@ -18,3 +18,17 @@ docker run --name yuhui-phpmyadmin-docker-container -e PMA_ARBITRARY=1 -p 8888:8
 
 用户名：root 密码：启动 mysql 的命令指定
 
+## mongodb
+
+```bash
+docker run -d \
+    -p 27017:27017 \
+    --name test-mongo \
+    -v data-vol:/data/db \
+    mongo:latest
+
+docker exec -it <CONTAINER_NAME> bash
+
+mongosh
+```
+
