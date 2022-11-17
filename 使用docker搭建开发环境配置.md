@@ -32,3 +32,9 @@ docker exec -it <CONTAINER_NAME> bash
 mongosh
 ```
 
+因为已经将宿主机的 ip:27021 映射到容器的 localhost:27021 , 所以不需要修改mongodb的配置文件，就可以从远程访问
+
+```bash
+mongosh mongodb://192.168.22.121:27021
+```
+
