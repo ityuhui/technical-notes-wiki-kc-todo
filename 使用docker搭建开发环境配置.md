@@ -24,7 +24,7 @@ docker run --name yuhui-phpmyadmin-docker-container -e PMA_ARBITRARY=1 -p 8888:8
 docker run -d \
     -p 27017:27017 \
     --name test-mongo \
-    -v data-vol:/data/db \
+    -v /data-vol:/data/db \
     mongo:latest
 
 docker exec -it <CONTAINER_NAME> bash
