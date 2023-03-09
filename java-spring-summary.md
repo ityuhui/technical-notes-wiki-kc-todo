@@ -30,3 +30,20 @@ constructor
 
 @RequestPart ← multipart/form-data,
 
+## Spring Security
+
+UserDetailService
+管理用户，（数据库，LDAP，内存），
+
+PasswordEncoder
+对密码进行编码
+验证password是否和现有编码相匹配
+
+都可以用 @Configura 和 @Bean 注入
+
+AuthenticationProvider 定义了认证逻辑，将用户管理和密码管理委托给上面两个接口
+authentication()
+supports()
+
+WebSecurityConfigurerAdapter已弃用:
+https://blog.csdn.net/lazy_LYF/article/details/127284459
