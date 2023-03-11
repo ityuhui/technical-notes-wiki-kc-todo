@@ -47,3 +47,8 @@ supports()
 
 WebSecurityConfigurerAdapter已弃用:
 https://blog.csdn.net/lazy_LYF/article/details/127284459
+
+## Spring 参考书
+
+Spring in Action 微信读书 oreilly
+Spring Security in Action CSDN博客 oreilly
