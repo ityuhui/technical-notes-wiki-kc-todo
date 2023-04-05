@@ -9,7 +9,7 @@
 
 ## image
 
-### dockfile 是用来生成 image 的
+### dockerfile 是用来生成 image 的
 
 ### docker 磁盘是只读的，由image 运行以后生成，数据需要放到数据库或者共享文件系统上
 
