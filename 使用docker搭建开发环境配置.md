@@ -16,7 +16,9 @@ docker run --name yuhui-phpmyadmin-docker-container -e PMA_ARBITRARY=1 -p 8888:8
 
 打开浏览器，访问 http://ip:8888
 
-用户名：root 密码：启动 mysql 的命令指定
+主机：IP地址（不要填写localhost）
+用户名：root
+密码：启动 mysql 的命令指定
 
 ## mongodb
 
