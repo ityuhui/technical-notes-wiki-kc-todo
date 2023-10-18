@@ -5,7 +5,7 @@
 ```bash
 sudo npm i n -g
 sudo n stable 
-``````
+```
 
 升级 npm
 
@@ -13,7 +13,7 @@ sudo n stable
 sudo npm install -g npm@latest
 ```
 
-查看全局软件包安装在什么地方
+查看全局软件包安装在什么地方:
 
 ```bash
 npm root -g
@@ -38,3 +38,17 @@ import(@abc)
 ```webpack
  @: "src"
 ```
+
+查看 node npm 配置：
+
+```BASH
+npm config ls
+npm config ls -l
+```
+
+npm 配置文件的位置：
+
+- Per-project config file: /path/to/my/project/.npmrc
+- Per-user config file: ~/.npmrc
+- Global config file: $prefix/npmrc
+- Build-in config file: /path/to/npm/npmrc
