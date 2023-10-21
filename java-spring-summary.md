@@ -7,12 +7,14 @@
 ## Anotations
 
 ### By Annotation
+
 @Controller
 is a @Component
 
 @ComponentScan will scan and initiate all @Component class
 
 ### By JavaConfig (XML)
+
 @Configuration
 @Bean is actually a Java configuration file
 
@@ -22,7 +24,7 @@ is a @Component
 or
 constructor
 
-## WEB 
+## WEB
 
 @RequestParam ← application/x-www-form-urlencoded,
 
@@ -46,7 +48,7 @@ authentication()
 supports()
 
 WebSecurityConfigurerAdapter已弃用:
-https://blog.csdn.net/lazy_LYF/article/details/127284459
+<https://blog.csdn.net/lazy_LYF/article/details/127284459>
 
 ## Spring Data JPA
 
@@ -54,7 +56,7 @@ https://blog.csdn.net/lazy_LYF/article/details/127284459
 
 src/main/resources/application.properties
 
-```
+```ini
 spring.datasource.url=jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf-8
 spring.datasource.username=root
 spring.datasource.password=
@@ -67,7 +69,7 @@ spring.jpa.hibernate.ddl-auto=none
 
 ### 数据库准备
 
-https://github.com/ityuhui/technical-notes-wiki-kc-todo/blob/master/%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE.md#mysql
+<https://github.com/ityuhui/technical-notes-wiki-kc-todo/blob/master/%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE.md#mysql>
 
 ## Spring 参考书
 

@@ -42,13 +42,13 @@
 
 - [prometheus 简单实验](./prometheus-simple-experiment.md)
 
-- grafana 
+- grafana
 
 - [istio](https://istio.io/latest/docs/setup/getting-started/)
 
 - test-infra
-  https://prow.k8s.io/
-  https://testgrid.k8s.io/
+  - <https://prow.k8s.io/>
+  - <https://testgrid.k8s.io/>
 
 - [jaegertracing/jaeger](https://github.com/jaegertracing/jaeger)
 
@@ -57,6 +57,7 @@
 - git - jenkins pipeline | argo - harbor - k8s
 
 - [Spark on k8s](https://github.com/GoogleCloudPlatform/spark-on-k8s-operator/blob/master/docs/user-guide.md)
+
 ## 以太网和虚拟网络
 
 - [Linux 中的虚拟网络-简介](https://zboya.github.io/post/virtual_network_in_linux/)
@@ -66,8 +67,8 @@
 - [Docker四种网络模式](https://www.jianshu.com/p/22a7032bb7bd)
 
 - linux虚拟网络：
-  * bridge
-  * veth
+  - bridge
+  - veth
 
 - vlan：将局域网分成多个逻辑子局域网，限制广播域
 
@@ -91,40 +92,40 @@
 
 - electron是主流的web-based 桌面应用程序方案
 - javascript模块化方案
-  * commonjs 是 nodejs 内置方案: `export/require`
-  * ES6 自带模块化方案: `export/import`
-  * AMD 和 CMD 用于浏览器侧，需要配合一个库文件，我认为目前已经被 ES6 内置方案取代
+  - commonjs 是 nodejs 内置方案: `export/require`
+  - ES6 自带模块化方案: `export/import`
+  - AMD 和 CMD 用于浏览器侧，需要配合一个库文件，我认为目前已经被 ES6 内置方案取代
 - reactjs
-  * 企业开发使用antd pro
-  * nextjs是同时可以用于前端渲染和后端渲染的 reactjs，nodejs 库
+  - 企业开发使用antd pro
+  - nextjs是同时可以用于前端渲染和后端渲染的 reactjs，nodejs 库
 - Typescript适用于node项目，前端库。自己的前端业务代码斟酌使用
 - nest.js 是 typescript 的 nodejs 框架，类似于 spring
-- https://ityuhui.github.io/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91-Frontend-Development/
+- <https://ityuhui.github.io/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91-Frontend-Development/>
 - CSS
-  * flexible box 布局
-  * Tailwindcss
-
-
+  - flexible box 布局
+  - Tailwindcss
 
 ## Data
 
 - 数据库
 - 数据仓库
 - 大数据
-  * BigTable/HBase 不是列式数据库，而是hashmap
-  * ClickHouse 是列式数据库
-  * Apache Parquet 是 列式数据 的文件存储格式
-  * Apache Arrow 是 列式数据 的内存格式，在不同大数据系统之间高效的交换数据
-- https://ityuhui.github.io/2021/06/02/my-database-summary/
+  - BigTable/HBase 不是列式数据库，而是hashmap
+  - ClickHouse 是列式数据库
+  - Apache Parquet 是 列式数据 的文件存储格式
+  - Apache Arrow 是 列式数据 的内存格式，在不同大数据系统之间高效的交换数据
+  - Apache Arrow Flight 基于 gPRC 编写的 arrow 数据传输网络框架
+- [我的数据库总结](https://ityuhui.github.io/2021/06/02/)my-database-summary/>
 - datalog metedata
-  * IBM WKC
-  * LF Egeria (Donated by IBM)
-  * Apache Atlas
+  - IBM WKC
+  - LF Egeria (Donated by IBM)
+  - Apache Atlas
 
 ## AI
 
 - FPGA vs ASIC
 - 深度学习模型训练可以租用云GPU
+
 ## 以太坊
 
 - [gitcoin.co](https://gitcoin.co/explorer?network=mainnet&idx_status=open&applicants=ALL&order_by=-web3_created)
@@ -135,4 +136,3 @@
 
 - <craftinginterpreters.com>
 - Structure and Interpretation of Computer Programs(SICP) Javascript Edition [读书笔记](https://github.com/ityuhui/technical-notes-wiki-kc-todo/blob/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-SICP.md)
-
