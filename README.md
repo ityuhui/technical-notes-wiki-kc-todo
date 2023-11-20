@@ -82,6 +82,14 @@
 
 - ebpf
 
+### 检查磁盘
+
+```bash
+sudo smartctl -a /dev/sda | less
+
+sudo badblocks -v /dev/sda -s
+```
+
 ## 后端编程和平台
 
 - [Golang golang 总结](https://github.com/ityuhui/go-experiment/blob/main/README.md)
