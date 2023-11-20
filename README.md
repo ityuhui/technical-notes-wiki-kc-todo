@@ -113,6 +113,23 @@ sudo badblocks -v /dev/sda -s
   - flexible box 布局
   - Tailwindcss
 
+## 全栈开发
+
+### 目前（2023年11月）对我个人来说最优的方法
+
+- 前端：next.js（使用 n 管理 node）
+- 后端：python fastapi（使用 venv，requirements.txt 管理依赖,pylint 做 UT）
+
+### 前端备选
+
+- angularjs
+
+### 后端备选
+
+- spring (Java)
+- nest.js (Node)
+- gin (Golang)
+
 ## Data
 
 - 数据库
