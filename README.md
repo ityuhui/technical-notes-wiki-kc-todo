@@ -140,7 +140,7 @@ sudo badblocks -v /dev/sda -s
   - Apache Parquet 是 列式数据 的文件存储格式
   - Apache Arrow 是 列式数据 的内存格式，在不同大数据系统之间高效的交换数据
   - Apache Arrow Flight 基于 gPRC 编写的 arrow 数据传输网络框架
-- [我的数据库总结](https://ityuhui.github.io/2021/06/02/)my-database-summary/>
+- [我的数据库总结](https://ityuhui.github.io/2021/06/02/my-database-summary/)
 - datalog metedata
   - IBM WKC
   - LF Egeria (Donated by IBM)
