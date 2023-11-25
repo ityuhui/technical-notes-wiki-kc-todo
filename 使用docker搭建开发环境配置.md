@@ -39,4 +39,3 @@ mongosh
 ```bash
 mongosh mongodb://192.168.22.121:27021
 ```
-
