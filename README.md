@@ -102,7 +102,7 @@ sudo badblocks -v /dev/sda -s
 - javascript模块化方案
   - commonjs 是 nodejs 内置方案: `export/require`
   - ES6 自带模块化方案: `export/import`
-  - AMD 和 CMD 用于浏览器侧，需要配合一个库文件，我认为目前已经被 ES6 内置方案取代
+  - AMD 和 CMD 用于浏览器侧，需要配合一个库文件，目前已经被 ES6 内置方案取代
 - reactjs
   - 企业开发使用antd pro
   - nextjs是同时可以用于前端渲染和后端渲染的 reactjs，nodejs 库
@@ -115,7 +115,7 @@ sudo badblocks -v /dev/sda -s
 
 ## 全栈开发
 
-### 目前（2024年3月）对我个人来说最优的方法
+### 目前（2024年3月）对我个人来说最优的方案
 
 - 前端：next.js（使用 n 管理 node）
 - 后端：java spring
@@ -162,3 +162,8 @@ sudo badblocks -v /dev/sda -s
 
 - <craftinginterpreters.com>
 - Structure and Interpretation of Computer Programs(SICP) Javascript Edition [读书笔记](https://github.com/ityuhui/technical-notes-wiki-kc-todo/blob/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-SICP.md)
+
+## 数学
+
+- [期望和方差](./数学-math-期望和方差.md)
+- [点积 内积 叉积 笛卡尔积](./数学-math-点积叉积.md)
