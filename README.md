@@ -115,19 +115,20 @@ sudo badblocks -v /dev/sda -s
 
 ## 全栈开发
 
-### 目前（2023年11月）对我个人来说最优的方法
+### 目前（2024年3月）对我个人来说最优的方法
 
 - 前端：next.js（使用 n 管理 node）
-- 后端：python fastapi（使用 venv，requirements.txt 管理依赖,pylint 做 UT）
+- 后端：java spring
 
 ### 前端备选
 
-- angularjs
+- angular
 
 ### 后端备选
 
-- spring (Java)
+- laravel (PHP)
 - nest.js (Node)
+- fastapi （Python）
 - gin (Golang)
 
 ## Data
