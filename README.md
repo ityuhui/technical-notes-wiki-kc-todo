@@ -90,11 +90,11 @@ sudo smartctl -a /dev/sda | less
 sudo badblocks -v /dev/sda -s
 ```
 
-## 后端编程和平台
+## 测试框架
 
-- [Golang golang 总结](https://github.com/ityuhui/go-experiment/blob/main/README.md)
-- libffi
-- shell单元测试框架-bats
+- Python Behave
+- Robot Framework - Python
+- 单元测试框架-bats - Shell
 
 ## 前端
 
@@ -162,7 +162,8 @@ sudo badblocks -v /dev/sda -s
 
 - <craftinginterpreters.com>
 - Structure and Interpretation of Computer Programs(SICP) Javascript Edition [读书笔记](https://github.com/ityuhui/technical-notes-wiki-kc-todo/blob/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-SICP.md)
-
+- [Golang golang 总结](https://github.com/ityuhui/go-experiment/blob/main/README.md)
+- libffi
 - 动态语言，譬如 Python、JavaScript，在 import 其他的文件或者模块的时候，都会把 import 的文件或者模块的 init 部分，里的全局部分，都先执行一遍，可能是 JIT 编译时执行的，也可能是运行时执行的，执行后，在内存里有一个数据结构，其中导出的、public的接口，供调用者使用。JavaScript的打包器，可能会根据 import 情况，将多个文件合并或切分，供浏览器使用。
 
 ## 数学
