@@ -58,6 +58,12 @@
 
 - [Spark on k8s](https://github.com/GoogleCloudPlatform/spark-on-k8s-operator/blob/master/docs/user-guide.md)
 
+### Terraform
+
+基础建设即服务，使用代码创建虚拟机，配置虚拟网络，安装操作系统，安装软件等
+
+社区fork后：OpenTofu
+
 ## 以太网和虚拟网络
 
 - [Linux 中的虚拟网络-简介](https://zboya.github.io/post/virtual_network_in_linux/)
@@ -93,7 +99,7 @@ sudo badblocks -v /dev/sda -s
 ## 测试框架
 
 - Python Behave
-- Robot Framework - Python
+- [Robot Framework](./robot-framework-summary.md) - Python
 - 单元测试框架-bats - Shell
 
 ## 前端
