@@ -132,10 +132,10 @@ sudo badblocks -v /dev/sda -s
 
 ### 后端备选
 
-- laravel (PHP)
 - nest.js (Node)
-- fastapi （Python）
+- fastapi（Python) [常用工具](https://ityuhui.github.io/2020/06/22/python-virtualenv-requirements-pytest-jupyter/)
 - gin (Golang)
+- laravel (PHP)
 
 ## Data
 
