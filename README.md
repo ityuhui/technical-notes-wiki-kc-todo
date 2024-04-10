@@ -121,21 +121,30 @@ sudo badblocks -v /dev/sda -s
 
 ## 全栈开发
 
-### 目前（2024年3月）对我个人来说最优的方案
-
-- 前端：next.js（使用 n 管理 node）
-- 后端：java spring
-
 ### 前端备选
 
+- nextjs
 - angular
 
 ### 后端备选
 
-- nest.js (Node)
-- fastapi（Python) [常用工具](https://ityuhui.github.io/2020/06/22/python-virtualenv-requirements-pytest-jupyter/)
-- gin (Golang)
+- Web项目：nextjs （JavaScript）
+- 纯API：Fastify，nestjs （JavaScript, Nodejs）
+- spring （Java）
 - laravel (PHP)
+- fastapi（Python)
+- gin (Golang)
+
+### 其他
+
+- Vercel
+- Supabase
+
+## Python
+
+[常用工具](https://ityuhui.github.io/2020/06/22/python-virtualenv-requirements-pytest-jupyter/)
+
+- Seaborn 在 Matplotlib 的基础上，进行了更高级的封装，使得作图更加方便快捷。
 
 ## Data
 
