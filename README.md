@@ -145,6 +145,7 @@ sudo badblocks -v /dev/sda -s
 [常用工具](https://ityuhui.github.io/2020/06/22/python-virtualenv-requirements-pytest-jupyter/)
 
 - Seaborn 在 Matplotlib 的基础上，进行了更高级的封装，使得作图更加方便快捷。
+- [流畅的 Python](./读书笔记-流畅的Python.md)
 
 ## Data
 
