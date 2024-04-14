@@ -60,3 +60,6 @@ class Vector:
     def __mul__(self, scalar):
         return Vector(self.x * scalar, self.y * scalar)
 ```
+
+## 第二章 序列构成的数组
+
