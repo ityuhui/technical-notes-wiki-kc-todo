@@ -132,7 +132,7 @@ sudo badblocks -v /dev/sda -s
 - 纯API：Fastify，nestjs （JavaScript, Nodejs）
 - spring （Java）
 - laravel (PHP)
-- fastapi（Python)
+- FastAPI（Python)
 - gin (Golang)
 
 ### 其他
@@ -146,6 +146,14 @@ sudo badblocks -v /dev/sda -s
 
 - Seaborn 在 Matplotlib 的基础上，进行了更高级的封装，使得作图更加方便快捷。
 - [流畅的 Python](./读书笔记-流畅的Python.md)
+- [Web 开发的重要概念辨析：CGI、WSGI、uWSGI、ASGI](https://baijiahao.baidu.com/s?id=1718367047580754624&wfr=spider&for=pc)
+
+### Python FastAPI Framework
+
+- Uvicorn is an ASGI web server implementation for Python.
+- Starlette is a lightweight ASGI framework/toolkit, which is ideal for building async web services in Python.
+- Pydantic is the most widely used data validation library for Python.
+- 用 Starlette 来写 python web backend, 使用 Uvicorn 来运行。
 
 ## Data
 
