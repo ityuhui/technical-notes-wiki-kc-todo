@@ -143,6 +143,7 @@ sudo badblocks -v /dev/sda -s
 ## Python
 
 [常用工具](https://ityuhui.github.io/2020/06/22/python-virtualenv-requirements-pytest-jupyter/)
+[使用 VSCode 远程运行 Python Jupyter Notebook](https://ityuhui.github.io/2023/10/18/python-jupyter-in-vscode-on-remote-host/)
 [我的项目](https://github.com/ityuhui/my-python-projects)
 
 - Seaborn 在 Matplotlib 的基础上，进行了更高级的封装，使得作图更加方便快捷。
