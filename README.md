@@ -52,7 +52,7 @@
 
 - [jaegertracing/jaeger](https://github.com/jaegertracing/jaeger)
 
-- [helm](https://helm.sh/zh/docs/intro/quickstart/) 
+- [helm](https://helm.sh/zh/docs/intro/quickstart/)
 
 - git - jenkins pipeline | argo - harbor - k8s
 
@@ -143,10 +143,19 @@ sudo badblocks -v /dev/sda -s
 ## Python
 
 [常用工具](https://ityuhui.github.io/2020/06/22/python-virtualenv-requirements-pytest-jupyter/)
+[我的项目](https://github.com/ityuhui/my-python-projects)
 
 - Seaborn 在 Matplotlib 的基础上，进行了更高级的封装，使得作图更加方便快捷。
 - [流畅的 Python](./读书笔记-流畅的Python.md)
 - [Web 开发的重要概念辨析：CGI、WSGI、uWSGI、ASGI](https://baijiahao.baidu.com/s?id=1718367047580754624&wfr=spider&for=pc)
+
+### matplotlib
+
+- Pyplot
+
+### sympy
+
+符号计算，可以方便的画出函数图
 
 ### Python FastAPI Framework
 
