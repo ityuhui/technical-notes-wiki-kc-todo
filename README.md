@@ -142,13 +142,22 @@ sudo badblocks -v /dev/sda -s
 
 ## Python
 
-[常用工具](https://ityuhui.github.io/2020/06/22/python-virtualenv-requirements-pytest-jupyter/)
-[使用 VSCode 远程运行 Python Jupyter Notebook](https://ityuhui.github.io/2023/10/18/python-jupyter-in-vscode-on-remote-host/)
-[我的项目](https://github.com/ityuhui/my-python-projects)
-
+- [常用工具](https://ityuhui.github.io/2020/06/22/python-virtualenv-requirements-pytest-jupyter/)
+- [使用 VSCode 远程运行 Python Jupyter Notebook](https://ityuhui.github.io/2023/10/18/python-jupyter-in-vscode-on-remote-host/)
+- [我的项目](https://github.com/ityuhui/my-python-projects)
 - Seaborn 在 Matplotlib 的基础上，进行了更高级的封装，使得作图更加方便快捷。
 - [流畅的 Python](./读书笔记-流畅的Python.md)
 - [Web 开发的重要概念辨析：CGI、WSGI、uWSGI、ASGI](https://baijiahao.baidu.com/s?id=1718367047580754624&wfr=spider&for=pc)
+
+### 模块，包
+
+Python 的 module 是一个 .py 文件，可以import
+
+python 的 package 的是一个文件夹，可以包含多个 module py 文件，包的文件夹里必须有 __init__.py 文件（可是是空文件，也可以包含一些初始化代码）
+
+import 可以导入package，也可以导入module
+
+golang 与此相反，module 包含 package
 
 ### matplotlib
 
