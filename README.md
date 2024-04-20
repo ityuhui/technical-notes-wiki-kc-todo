@@ -148,6 +148,7 @@ sudo badblocks -v /dev/sda -s
 - Seaborn 在 Matplotlib 的基础上，进行了更高级的封装，使得作图更加方便快捷。
 - [流畅的 Python](./读书笔记-流畅的Python.md)
 - [Web 开发的重要概念辨析：CGI、WSGI、uWSGI、ASGI](https://baijiahao.baidu.com/s?id=1718367047580754624&wfr=spider&for=pc)
+- python 可以使用 type hints 语法来写带类型的代码，对程序没有影响，但是可以给静态分析工具使用。
 
 ### 模块，包
 
