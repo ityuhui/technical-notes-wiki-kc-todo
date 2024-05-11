@@ -88,6 +88,12 @@
 
 - ebpf
 
+### 创建 patch
+
+```bash
+diff -Naur file.before file.after
+```
+
 ### 检查磁盘
 
 ```bash
@@ -144,11 +150,12 @@ sudo badblocks -v /dev/sda -s
 
 - [常用工具](https://ityuhui.github.io/2020/06/22/python-virtualenv-requirements-pytest-jupyter/)
 - [使用 VSCode 远程运行 Python Jupyter Notebook](https://ityuhui.github.io/2023/10/18/python-jupyter-in-vscode-on-remote-host/)
-- [我的项目](https://github.com/ityuhui/my-python-projects)
-- Seaborn 在 Matplotlib 的基础上，进行了更高级的封装，使得作图更加方便快捷。
-- [流畅的 Python](./读书笔记-流畅的Python.md)
+- [我的 Python 项目](https://github.com/ityuhui/my-python-projects)
+- [读书笔记-流畅的 Python](./读书笔记-流畅的Python.md)
 - [Web 开发的重要概念辨析：CGI、WSGI、uWSGI、ASGI](https://baijiahao.baidu.com/s?id=1718367047580754624&wfr=spider&for=pc)
 - python 可以使用 type hints 语法来写带类型的代码，解释器在运行时可以发现类型不匹配的错误，静态分析工具也可以使用。
+- Seaborn 在 Matplotlib 的基础上，进行了更高级的封装，使得作图更加方便快捷。
+- 快速搭建http静态服务器 `python3 -m http.server -d ./reports 9000`
 
 ### 模块，包
 
