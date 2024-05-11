@@ -19,6 +19,12 @@ Example
     Log       This is not executed
 ```
 
+### 选择特定的 test case 执行
+
+```bash
+robot -t "Test Case Name" Test Suite Name
+```
+
 ### 有效的 test 文件
 
 All files and directories starting with a dot (.) or an underscore (_) are ignored.
