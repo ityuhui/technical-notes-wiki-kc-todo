@@ -30,3 +30,10 @@ Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docke
 问题描述：连接 WSL2 时无法下载证书
 
 解决：使用 VSCode Remote SSH 连接到WSL里，退出，再使用 WSL2 模式连接，就成功了。
+
+### 1. sudo 或者 sudo -E 无法带入环境变量
+
+```bash
+sudo -i ${command} # 登录，所以会读入 /etc/profile.d/
+sudo -s # 等价于 sudo su，不同的是 -s 使用原来的环境变量
+```

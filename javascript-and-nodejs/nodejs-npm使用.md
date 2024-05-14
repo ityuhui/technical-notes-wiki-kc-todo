@@ -41,9 +41,18 @@ import(@abc)
 
 查看 node npm 配置：
 
-```BASH
+```bash
 npm config ls
 npm config ls -l
+
+npm config get prefix -g
+npm prefix -g
+```
+
+设置
+
+```bash
+npm config set prefix /usr/local -g
 ```
 
 npm 配置文件的位置：
