@@ -108,7 +108,9 @@ sudo badblocks -v /dev/sda -s
 - [Robot Framework](./robot-framework-summary.md) - Python
 - 单元测试框架-bats - Shell
 
-## 前端
+## 全栈开发
+
+### 前端
 
 - electron是主流的web-based 桌面应用程序方案
 - javascript模块化方案
@@ -118,14 +120,12 @@ sudo badblocks -v /dev/sda -s
 - reactjs
   - 企业开发使用antd pro
   - nextjs是同时可以用于前端渲染和后端渲染的 reactjs，nodejs 库
-- Typescript适用于node项目，前端库。自己的前端业务代码斟酌使用
 - nest.js 是 typescript 的 nodejs 框架，类似于 spring
 - <https://ityuhui.github.io/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91-Frontend-Development/>
 - CSS
   - flexible box 布局
   - Tailwindcss
-
-## 全栈开发
+  - bootstrapt
 
 ### 前端备选
 
