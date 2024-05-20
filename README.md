@@ -112,8 +112,8 @@ sudo badblocks -v /dev/sda -s
 
 ### 前端
 
-- <https://github.com/ityuhui/my-javascript-code>
-- electron是主流的web-based 桌面应用程序方案
+- [我的 JavaScript 代码库](https://github.com/ityuhui/my-javascript-code)
+- electron是主流的 web-based 桌面应用程序方案
 - javascript模块化方案
   - commonjs 是 nodejs 内置方案: `export/require`
   - ES6 自带模块化方案: `export/import`
@@ -126,7 +126,7 @@ sudo badblocks -v /dev/sda -s
 - CSS
   - flexible box 布局
   - Tailwindcss
-  - bootstrapt
+  - Bootstrap
 
 ### 前端备选
 
@@ -139,7 +139,7 @@ sudo badblocks -v /dev/sda -s
 - 纯API：Fastify，nestjs （JavaScript, Nodejs）
 - spring （Java）
 - laravel (PHP)
-- FastAPI（Python)
+- FastAPI (Python)
 - gin (Golang)
 
 ### 其他
@@ -213,7 +213,6 @@ golang 与此相反，module 包含 package
 ## 编程语言和编译器
 
 - <craftinginterpreters.com>
-- Structure and Interpretation of Computer Programs(SICP) Javascript Edition [读书笔记](https://github.com/ityuhui/technical-notes-wiki-kc-todo/blob/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-SICP.md)
 - [Golang golang 总结](https://github.com/ityuhui/go-experiment/blob/main/README.md)
 - libffi
 - 动态语言，譬如 Python、JavaScript，在 import 其他的文件或者模块的时候，都会把 import 的文件或者模块的 init 部分，里的全局部分，都先执行一遍，可能是 JIT 编译时执行的，也可能是运行时执行的，执行后，在内存里有一个数据结构，其中导出的、public的接口，供调用者使用。JavaScript的打包器，可能会根据 import 情况，将多个文件合并或切分，供浏览器使用。
