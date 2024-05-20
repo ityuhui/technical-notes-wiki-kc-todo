@@ -112,6 +112,7 @@ sudo badblocks -v /dev/sda -s
 
 ### 前端
 
+- <https://github.com/ityuhui/my-javascript-code>
 - electron是主流的web-based 桌面应用程序方案
 - javascript模块化方案
   - commonjs 是 nodejs 内置方案: `export/require`
