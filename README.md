@@ -217,6 +217,10 @@ golang 与此相反，module 包含 package
 - libffi
 - 动态语言，譬如 Python、JavaScript，在 import 其他的文件或者模块的时候，都会把 import 的文件或者模块的 init 部分，里的全局部分，都先执行一遍，可能是 JIT 编译时执行的，也可能是运行时执行的，执行后，在内存里有一个数据结构，其中导出的、public的接口，供调用者使用。JavaScript的打包器，可能会根据 import 情况，将多个文件合并或切分，供浏览器使用。
 
+## 算法
+
+- [算法总结](./algorithm.md)
+
 ## 数学
 
 - [期望和方差](./数学-math-期望和方差.md)
