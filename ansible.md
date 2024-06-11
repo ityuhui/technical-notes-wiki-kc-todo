@@ -1,0 +1,132 @@
+# Ansible 学习总结
+
+## Ansible 命令
+
+```bash
+ansible-doc service
+ansible-doc -l | grep ^apt
+
+ansible-playbook --syntax-check webservers-tls.yml
+ansible-lint webservers-tls.yml
+yamllint webservers-tls.yml
+ansible-inventory --host testserver -i inventory/vagrant.ini
+ansible-galaxy role init --init-path playbooks/roles web
+```
+
+## 一个 playbook 示例
+
+```yaml
+---
+- name: Configure webserver with Nginx and TLS
+  hosts: webservers
+  become: true
+  gather_facts: false
+
+  vars:
+    tls_dir: /etc/nginx/ssl/
+    key_file: nginx.key
+    cert_file: nginx.crt
+    conf_file: /etc/nginx/sites-available/default
+    server_name: localhost
+
+  handlers:
+    - name: Restart nginx
+      service:
+        name: nginx
+        state: restarted
+
+  tasks:
+    - name: Ensure nginx is installed
+      package:
+        name: nginx
+        update_cache: true
+      notify: Restart nginx
+
+    - name: Create directories for TLS certificates
+      file:
+        path: "{{ tls_dir }}"
+        state: directory
+        mode: '0750'
+      notify: Restart nginx
+
+    - name: Copy TLS files
+      copy:
+        src: "{{ item }}"
+        dest: "{{ tls_dir }}"
+        mode: '0600'
+      loop:
+        - "{{ key_file }}"
+        - "{{ cert_file }}"
+      notify: Restart nginx
+
+    - name: Manage nginx config template
+      template:
+        src: nginx.conf.j2
+        dest: "{{ conf_file }}"
+        mode: '0644'
+      notify: Restart nginx
+
+    - name: Enable configuration
+      file:
+        src: /etc/nginx/sites-available/default
+        dest: /etc/nginx/sites-enabled/default
+        state: link
+
+    - name: Install home page
+      template:
+        src: index.html.j2
+        dest: /usr/share/nginx/html/index.html
+        mode: '0644'
+
+    - name: Restart nginx
+      meta: flush_handlers
+
+    - name: "Test it! https://localhost:8443/index.html"
+      delegate_to: localhost
+      become: false
+      uri:
+        url: 'https://localhost:8443/index.html'
+        validate_certs: false
+        return_content: true
+      register: this
+      failed_when: "'Running on ' not in this.content"
+      tags:
+        - test
+...
+```
+
+## 循环
+
+```yaml
+- name: Copy TLS files
+  copy:
+    src: "{{ item }}"
+    dest: "{{ tls_dir }}"
+    mode: '0600'
+  loop:
+    - "{{ key_file }}"
+    - "{{ cert_file }}"
+  notify: Restart nginx
+...
+```
+
+## 变量
+
+```yaml
+amsterdam.example.com color=red
+vagrant1 ansible_host=127.0.0.1 ansible_port=2222
+```
+
+## 通配符
+
+```yaml
+web[01:20].example.com
+```
+
+## 组
+
+```yaml
+[django:children]
+web
+task
+```

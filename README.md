@@ -102,6 +102,34 @@ sudo smartctl -a /dev/sda | less
 sudo badblocks -v /dev/sda -s
 ```
 
+### 虚拟屏幕
+
+```bash
+xvfb-run --server-args=“-screen 0 1920x1080x24 -ac”
+```
+
+### linux管道（|）与重定向（<>）的异同
+
+#### 共同点
+
+管道和重定向都改变程序的标准输入或者标准输出
+
+#### 区别
+
+管道（|）两边都是程序（命令），而重定向（<>）只有左边是程序（命令）。即是，管道通过两个子进程来改变两边命令的输入或输出，重定向只通过一个子进程来改变左边的命令的输入或输出。
+管道：左边的命令应该有标准输出 | 右边的命令应该接受标准输入
+重定向：
+左边的命令应该有标准输出 > 右边只能是文件
+左边的命令应该需要标准输入 < 右边只能是文件
+
+### 程序运行计时
+
+```bash
+time node -e '/A(B|C+)+D/.test("AAA")'
+```
+
+以及 node 命令行执行一段脚本
+
 ## 测试框架
 
 - Python Behave
@@ -127,6 +155,7 @@ sudo badblocks -v /dev/sda -s
   - flexible box 布局
   - Tailwindcss
   - Bootstrap
+  - [原生 JavaScript](https://www.cnblogs.com/xyq1107/p/7746473.html)
 
 ### 前端备选
 
