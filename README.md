@@ -108,6 +108,18 @@ sudo badblocks -v /dev/sda -s
 xvfb-run --server-args=“-screen 0 1920x1080x24 -ac”
 ```
 
+### 后台运行且忽略sighup
+
+```bash
+nohup xxx &
+```
+
+### 计时，node命令行执行，以及node 正则表达式
+
+```bash
+time node -e '/A(B|C+)+D/.test("AAA")'
+```
+
 ### linux管道（|）与重定向（<>）的异同
 
 #### 共同点
