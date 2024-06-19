@@ -134,13 +134,11 @@ time node -e '/A(B|C+)+D/.test("AAA")'
 左边的命令应该有标准输出 > 右边只能是文件
 左边的命令应该需要标准输入 < 右边只能是文件
 
-### 程序运行计时
+### 取消用户的密码限制
 
 ```bash
-time node -e '/A(B|C+)+D/.test("AAA")'
+/etc/security/pwquality.conf
 ```
-
-以及 node 命令行执行一段脚本
 
 ## 测试框架
 
@@ -152,7 +150,7 @@ time node -e '/A(B|C+)+D/.test("AAA")'
 
 ### 前端
 
-- [我的 JavaScript 代码库](https://github.com/ityuhui/my-javascript-code)
+- [我的 JavaScript 代码以及知识库](https://github.com/ityuhui/my-javascript-code)
 - electron是主流的 web-based 桌面应用程序方案
 - javascript模块化方案
   - commonjs 是 nodejs 内置方案: `export/require`
