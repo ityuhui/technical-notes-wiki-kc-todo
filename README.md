@@ -165,11 +165,14 @@ time node -e '/A(B|C+)+D/.test("AAA")'
   - flexible box 布局
   - Tailwindcss
   - Bootstrap
-  - [原生 JavaScript](https://www.cnblogs.com/xyq1107/p/7746473.html)
+- 组件库
+  - shadcn
+  - MUI
+- [原生 JavaScript](https://www.cnblogs.com/xyq1107/p/7746473.html)
 
 ### 前端备选
 
-- nextjs
+- nextjs 部署到 vercel
 - angular
 
 ### 后端备选
