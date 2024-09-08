@@ -241,6 +241,13 @@ golang 与此相反，module 包含 package
   - LF Egeria (Donated by IBM)
   - Apache Atlas
 
+## 搜索引擎
+
+开源的搜索引擎
+
+- nutch
+- lucene
+
 ## AI
 
 - FPGA vs ASIC
@@ -267,3 +274,11 @@ golang 与此相反，module 包含 package
 
 - [期望和方差](./数学-math-期望和方差.md)
 - [点积 内积 叉积 笛卡尔积](./数学-math-点积叉积.md)
+
+## 其他的知识
+
+### curl
+
+```bash
+curl -fsSL https://github.com/someone/project/raw/main/install.sh | bash -s
+```
